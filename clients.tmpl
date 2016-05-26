@@ -1,0 +1,16 @@
+  <ul>
+    <li ng-repeat="client in $ctrl.clients | filter: $ctrl.query">
+      <span ng-click="client.sclients.length ? client.expanded=!client.expanded : null"
+        ng-show=client.sclients.length>
+        <a href="" ng-show=client.expanded>-</a>
+        <a href="" ng-show=!client.expanded>+</a>
+      </span>
+      <input type=checkbox ng-model=client.selected>
+      {{client.name}}
+      <span ng-show=client.sclients.length>
+        {{$ctrl.numSelectedSubClients(client)}}/{{$ctrl.numSubClients(client)}}
+      </span>
+      <clients-tree clients=client.sclients ng-show=client.expanded>
+      </clients-tree>
+    </li>
+  </ul>
